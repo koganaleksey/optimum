@@ -1,0 +1,11 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+#footernav .nav-link {
+  background-color: transparent;
+  border: none;
+}
+
+#footernav .nav-item {
+  padding-left: 0 !important;
+}

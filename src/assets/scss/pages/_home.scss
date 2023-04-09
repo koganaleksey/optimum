@@ -1,0 +1,268 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+
+// #divider {
+//   height: 19px;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-image: url("../img/stroke.svg");
+//   background-position: center center;
+// }
+
+// .header,
+// .about,
+// .why {
+//   background-color: $info;
+// }
+
+.cover {
+  background-image: url("../img/AdobeStock_121997393.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.highlight {
+  background-image: url("../img/shutterstock_1818764912-scaled.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.eco {
+  background-image: url("../img/AdobeStock_192463656.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.contacts {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-text {
+  position: absolute;
+  top: -5px;
+  right: 60px;
+}
+
+.info-text .tooltip {
+  background: white;
+  bottom: 100%;
+  color: $black;
+  display: block;
+  left: -138px;
+  margin-bottom: 15px;
+  opacity: 0;
+  padding: 15px;
+  pointer-events: none;
+  position: absolute;
+  width: 300px;
+  border-radius: 7px;
+  border: 1px solid $primary;
+  -webkit-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -o-transform: translateY(10px);
+  transform: translateY(10px);
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  -ms-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  // -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+  // -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+  // -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+  // -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+  // box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+/* This bridges the gap so you can mouse into the tooltip without it disappearing */
+.info-text .tooltip:before {
+  bottom: -20px;
+  content: " ";
+  display: block;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* CSS Triangles - see Trevor's post */
+.info-text .tooltip:after {
+  border-left: solid transparent 10px;
+  border-right: solid transparent 10px;
+  border-top: solid $primary 10px;
+  bottom: -10px;
+  content: " ";
+  height: 0;
+  left: 50%;
+  margin-left: -13px;
+  position: absolute;
+  width: 0;
+}
+
+.info-text:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+  transform: translateY(0px);
+}
+// ======================================================
+
+#gmap_canvas {
+  height: 280px;
+  width: 100%;
+}
+
+.mapouter {
+  position: relative;
+  text-align: left;
+  height: 100%;
+  width: 100%;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 100%;
+  width: 100%;
+}
+
+// =====================================================================
+// Mobile menu
+// main {
+//   height: 100vh;
+//   position: relative;
+//   overflow: hidden;
+// }
+.aside-section {
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  overflow-y: scroll;
+}
+
+.aside-right {
+  width: 40%;
+  right: -25px;
+  background-color: white;
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 5;
+  box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.15);
+}
+
+.aside-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 120px;
+  text-align: left;
+  padding-left: 50px;
+}
+
+.aside-content {
+  margin-top: 120px;
+  padding: 0 40px;
+  position: relative;
+  color: $primary;
+  text-align: center;
+}
+
+.aside-list li {
+  margin-bottom: 40px;
+}
+
+.aside-anchor {
+  text-decoration: none !important;
+  color: $primary;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ aside .aside-right {
+  transform: translateX(0%);
+}
+
+.no-scroll {
+  position: fixed;
+  overflow-y: scroll;
+}
+
+input[type="checkbox"]:checked ~ label .top {
+  -webkit-transform: translateY(0px) rotateZ(45deg);
+  -moz-transform: translateY(0px) rotateZ(45deg);
+  -ms-transform: translateY(0px) rotateZ(45deg);
+  -o-transform: translateY(0px) rotateZ(45deg);
+  transform: translateY(0px) rotateZ(45deg);
+}
+
+input[type="checkbox"]:checked ~ label .bottom {
+  -webkit-transform: translateY(-15px) rotateZ(-45deg);
+  -moz-transform: translateY(-15px) rotateZ(-45deg);
+  -ms-transform: translateY(-15px) rotateZ(-45deg);
+  -o-transform: translateY(-15px) rotateZ(-45deg);
+  transform: translateY(-15px) rotateZ(-45deg);
+}
+
+input[type="checkbox"]:checked ~ label .middle {
+  width: 0;
+}
+
+.middle {
+  margin: 0 auto;
+}
+
+.menu-label {
+  top: 35px;
+  right: 12px;
+  display: inline-block;
+  padding: 7px 10px;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 10px;
+  z-index: 6;
+  position: absolute;
+}
+
+.bar {
+  display: block;
+  background-color: $primary;
+  width: 30px;
+  height: 3px;
+  border-radius: 0px;
+  margin: 5px auto;
+  transition: background-color 0.4s ease-in, transform 0.4s ease-in,
+    width 0.4s ease-in;
+}
+
+// MEDIA
+
+@media (max-width: 600px) {
+  .navbar-brand img {
+    width: 85%;
+  }
+  .aside-right {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1279px) {
+  #cover h1 {
+    line-height: 1.2;
+  }
+}

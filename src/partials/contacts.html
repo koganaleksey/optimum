@@ -1,0 +1,108 @@
+<div
+  class="row wow fadeInUp"
+  data-wow-duration="1s"
+  data-wow-delay="0s"
+  data-wow-offset="0"
+>
+  <div class="col-md-6 h-100">
+    <h2 class="text-center text-md-left mb-4 text-uppercase">Contacts</h2>
+
+    <div class="row justify-content-center justify-content-md-start">
+      <div class="col-12 col-sm-5 col-md-6 mb-3 text-center text-md-left">
+        <h4 class="mb-4">ОPTIMUM MACHINERY TRADING CO.L.L.C.</h4>
+
+        <p class="mb-0">
+          <strong>Address:</strong><br />
+          <span
+            >Palm Strip Shopping Mall,<br />332-1077, office G18-09,<br />Dubai,
+            UAE</span
+          >
+        </p>
+      </div>
+
+      <div
+        class="col-12 col-sm-5 col-md-6 mb-3 mb-md-3 d-flex justify-content-end flex-column"
+      >
+        <div
+          class="d-flex d-md-block justify-content-center justify-content-md-start"
+        >
+          <p class="font-weight-bold">E-mail:&nbsp;</p>
+          <a href="mailto:info@viaappiauae.com" class="mb-2 d-block"
+            >info@domain.com</a
+          >
+        </div>
+
+        <div
+          class="d-flex d-md-block justify-content-center justify-content-md-start"
+        >
+          <p class="font-weight-bold">Phone:&nbsp;</p>
+          <a href="tel:+97145831745" class="d-block">+971 4 583 1745</a>
+        </div>
+      </div>
+
+      <div class="col-12 mb-5 m-md-0">
+        <div class="mapouter mt-4">
+          <div class="gmap_canvas">
+            <iframe
+              id="gmap_canvas"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.1000499331585!2d55.26203031593816!3d25.23355493641481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4254a4238001%3A0x2df1c972c21922fb!2sPalm%20Strip%20Mall!5e0!3m2!1sen!2sen!4v1681041921049!5m2!1sen!2sen"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 px-md-5">
+    <h3 class="text-center text-md-left">Write to us</h3>
+
+    <form
+      action="{{root}}actions/send.php"
+      method="POST"
+      class="needs-validation h-100"
+      novalidate
+    >
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+          />
+          <div class="invalid-feedback">Please enter your name</div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+          <span class="small"
+            >We will never share your email with anyone else.</span
+          >
+          <div class="invalid-feedback">Please enter your email</div>
+        </div>
+        <input type="text" id="website" name="website" style="display: none" />
+        <div class="col-md-12 mb-3">
+          <label for="message">Message</label>
+          <textarea
+            class="form-control"
+            id="message"
+            name="message"
+            rows="7"
+            required
+          ></textarea>
+          <div class="invalid-feedback">Please enter your message</div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary mt-4" type="submit">Send</button>
+    </form>
+  </div>
+</div>
