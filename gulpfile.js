@@ -156,7 +156,7 @@ function deploy() {
   log(chalk.red.bold('---------------DEPLOY TO GITHUB PAGES---------------'));
   return src('dist/**/*')
     .pipe(ghPages({
-      remoteUrl: '',
+      remoteUrl: 'https://github.com/koganaleksey/optimum.git',
       branch: 'build',
       message: 'Automated push via gulp'
     }));

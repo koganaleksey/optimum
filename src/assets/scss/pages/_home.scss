@@ -34,7 +34,7 @@
   background-image: url("../img/AdobeStock_192463656.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: left center;
 }
 
 .contacts {
@@ -253,16 +253,35 @@ input[type="checkbox"]:checked ~ label .middle {
 // MEDIA
 
 @media (max-width: 600px) {
-  .navbar-brand img {
-    width: 85%;
-  }
   .aside-right {
     width: 80%;
+  }
+  .info-text {
+    right: 40px;
   }
 }
 
 @media (max-width: 1279px) {
   #cover h1 {
     line-height: 1.2;
+  }
+  .info-text {
+    right: 30px;
+  }
+}
+
+@media (max-width: 1439px) {
+  .info-text {
+    right: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .info-text {
+    right: 85px;
+  }
+  .info-text .tooltip {
+    width: 225px;
+    left: -101px;
   }
 }
