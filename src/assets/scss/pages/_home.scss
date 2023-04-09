@@ -53,13 +53,13 @@
   bottom: 100%;
   color: $black;
   display: block;
-  left: -138px;
+  left: -187px;
   margin-bottom: 15px;
   opacity: 0;
   padding: 15px;
   pointer-events: none;
   position: absolute;
-  width: 300px;
+  width: 250px;
   border-radius: 7px;
   border: 1px solid $primary;
   -webkit-transform: translateY(10px);
@@ -72,11 +72,11 @@
   -ms-transition: all 0.25s ease-out;
   -o-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
-  // -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-  // -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-  // -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-  // -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-  // box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+  -webkit-box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* This bridges the gap so you can mouse into the tooltip without it disappearing */
@@ -98,7 +98,7 @@
   bottom: -10px;
   content: " ";
   height: 0;
-  left: 50%;
+  left: 80%;
   margin-left: -13px;
   position: absolute;
   width: 0;
