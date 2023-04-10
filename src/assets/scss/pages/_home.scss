@@ -56,7 +56,7 @@
   left: -187px;
   margin-bottom: 15px;
   opacity: 0;
-  padding: 15px;
+  padding: 15px 15px 5px 5px;
   pointer-events: none;
   position: absolute;
   width: 250px;
@@ -282,6 +282,6 @@ input[type="checkbox"]:checked ~ label .middle {
   }
   .info-text .tooltip {
     width: 225px;
-    left: -101px;
+    left: -166px;
   }
 }
