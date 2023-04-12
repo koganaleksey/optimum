@@ -12,7 +12,7 @@ $success_message = '<div class="d-flex justify-content-center align-items-center
 $mail = array(
   'to' => "info@omtuae.com",
   'subject' => "Message from omtuae.com",
-  'message' => "Имя: " . $name . "\n\n" . "Email: " . $email_from . "\n\n" . "Сообщение: " . "\r\n" . $message,
+  'message' => "Name: " . $name . "\n\n" . "Email: " . $email_from . "\n\n" . "Message: " . "\r\n" . $message,
   'headers' => "MIME-Version: 1.0\r\n" . "Content-type: text/plain; charset=utf-8\r\n" . "From: <omtuae.com>\r\n"
 );
 
