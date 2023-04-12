@@ -1,5 +1,5 @@
 <?php
-require 'PHPMailer-master/PHPMailerAutoload.php';
+require 'PHPMailerAutoload.php';
 
 if (!empty($_POST['website'])) die();
 
@@ -7,7 +7,7 @@ $name = $_POST['name'];
 $email_from = $_POST['email'];
 $message = $_POST['message'];
 
-$email='testemail@email.com';//change email to receipents email
+$email='info@omtuae.com';//change email to receipents email
   
 $mail = new PHPMailer();
 $mail->SMTPDebug = 0; 
