@@ -1,5 +1,5 @@
 <?php
-require 'PHPMailerAutoload.php';
+require './PHPMailerAutoload.php';
 
 if (!empty($_POST['website'])) die();
 
