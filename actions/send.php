@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHPMailer - PHP email creation and transport class.
  * PHP Version 5.5.
@@ -5128,6 +5129,7 @@ class PHPMailer
    }
 }
 
+
 if (isset($_POST['send'])) {
    $name = $_POST['name'];
    $email = $_POST['email'];
@@ -5165,3 +5167,7 @@ if (isset($_POST['send'])) {
    }
 
 }
+?>
+<?php
+die();
+?>
