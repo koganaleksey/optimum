@@ -6,14 +6,14 @@ $name = $_POST['name'];
 $email_from = $_POST['email'];
 $message = $_POST['message'];
 $success_message = '<div class="d-flex justify-content-center align-items-center text-center" style="width:100vw;height:100vh">
-<h3 style="width:400px;"><span class="font-weight-bold text-success">Спасибо, что связались с нами.</span><br><br><span class="font-weight-light">Мы свяжемся с вами в ближайшее время.<br>Теперь вы будете перенаправлены обратно на <a href="https://viaappiauae.com">viaappiauae.com.</a></span></h3>
+<h3 style="width:400px;"><span class="font-weight-bold text-success">Thank you for contacting us.</span><br><br><span class="font-weight-light">We will contact you shortly.<br>You will now be redirected back to <a href="https://omtuae.com">omtuae.com.</a></span></h3>
 </div>';
 
 $mail = array(
-  'to' => "info@viaappiauae.com",
-  'subject' => "Сообщение с сайта viaappiauae.com",
+  'to' => "koganaleksey@mail.ru",
+  'subject' => "Message from omtuae.com",
   'message' => "Имя: " . $name . "\n\n" . "Email: " . $email_from . "\n\n" . "Сообщение: " . "\r\n" . $message,
-  'headers' => "MIME-Version: 1.0\r\n" . "Content-type: text/plain; charset=utf-8\r\n" . "From: <viaappiauae.com>\r\n"
+  'headers' => "MIME-Version: 1.0\r\n" . "Content-type: text/plain; charset=utf-8\r\n" . "From: <omtuae.com>\r\n"
 );
 
 mail($mail['to'], $mail['subject'], $mail['message'], iconv('utf-8', 'windows-1251', $mail['headers']));
@@ -23,7 +23,7 @@ echo iconv('utf-8', 'windows-1251', $success_message);
 ?>
 
 <head>
-  <meta http-equiv="refresh" content="7;URL=https://viaappiauae.com">
+  <meta http-equiv="refresh" content="7;URL=https://omtuae.com">
   <link rel="stylesheet" href="../assets/css/main.min.css">
 </head>
 
