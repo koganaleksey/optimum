@@ -1,13 +1,16 @@
 <?php
-// Файлы phpmailer
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-// Переменные, которые отправляет пользователь
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+$name = $_GET['name'] ?? $_POST['name'];
+$email = $_GET['email'] ?? $_POST['email'];
+$message = $_GET['message'] ?? $_POST['message'];
 
 // Формирование самого письма
 $title = "Заголовок письма";
@@ -18,44 +21,39 @@ $body = "
 <b>Сообщение:</b><br>$message
 ";
 
-// Настройки PHPMailer
-$mail = new PHPMailer\PHPMailer\PHPMailer();
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
 try {
-  $mail->isSMTP();
-  $mail->CharSet = "UTF-8";
-  $mail->SMTPAuth   = true;
-  //$mail->SMTPDebug = 2;
-  $mail->Debugoutput = function ($str, $level) {
-    $GLOBALS['status'][] = $str;
-  };
+    $mail->isSMTP();
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
-  // Настройки вашей почты
-  $mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
-  $mail->Username   = 'info@omtuae.com'; // Логин на почте
-  $mail->Password   = 'DAfiKYAMQJvSL4PJsyXw'; // Пароль на почте
-  $mail->SMTPSecure = 'ssl';
-  $mail->Port       = 465;
-  $mail->setFrom('mail@mail.ru', 'Message from website'); // Адрес самой почты и имя отправителя
+    $mail->CharSet = "UTF-8";
+    $mail->SMTPAuth   = true;
 
-  // Получатель письма
-  $mail->addAddress('info@omtuae.com');
-  // $mail->addAddress('youremail@gmail.com'); // Ещё один, если нужен
+    // Настройки вашей почты
+    $mail->Host       = 'smtp.mail.ru';
+    $mail->Username   = 'info@omtuae.com';
+    $mail->Password   = 'DAfiKYAMQJvSL4PJsyXw';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port       = 465;
 
-  // Отправка сообщения
-  $mail->isHTML(true);
-  $mail->Subject = $title;
-  $mail->Body = $body;
+    // Username и этот адресс должен совпадать
+    $mail->setFrom('info@omtuae.com', 'Message from website');
 
-  // Проверяем отравленность сообщения
-  if ($mail->send()) {
-    $result = "success";
-  } else {
-    $result = "error";
-  }
+    // Получатель письма
+    $mail->addAddress('info@omtuae.com');
+    // $mail->addAddress('youremail@gmail.com'); // Ещё один, если нужен
+
+    // Отправка сообщения
+    $mail->isHTML(true);
+
+    $mail->Subject = $title;
+    $mail->Body = $body;
+
+    $mail->send();
+
+    echo 'Message has been sent';
 } catch (Exception $e) {
-  $result = "error";
-  $status = "Сообщение не было отправлено. Причина ошибки: {$mail->ErrorInfo}";
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
-// Отображение результата
-echo json_encode(["result" => $result, "resultfile" => $rfile, "status" => $status]);
