@@ -1,63 +1,33 @@
 <?php
-//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
-//Load Composer's autoloader
-require 'vendor/autoload.php';
+if (!empty($_POST['website']))
+  die();
 
-$name = $_GET['name'] ?? $_POST['name'];
-$email = $_GET['email'] ?? $_POST['email'];
-$message = $_GET['message'] ?? $_POST['message'];
+$name = $_POST['name'];
+$email_from = $_POST['email'];
+$message = $_POST['message'];
+$success_message = '<div class="d-flex justify-content-center align-items-center text-center" style="width:100vw;height:100vh">
+<h3 style="width:400px;"><span class="font-weight-bold text-success">Thank you for contacting us.</span><br><br><span class="font-weight-light">We will contact you shortly.<br>You will now be redirected back to <a href="https://omtuae.com">omtuae.com.</a></span></h3>
+</div>';
 
-// Формирование самого письма
-$title = "Заголовок письма";
-$body = "
-<h2>Новое письмо</h2>
-<b>Имя:</b> $name<br>
-<b>Почта:</b> $email<br><br>
-<b>Сообщение:</b><br>$message
-";
+$mail = array(
+  'to' => "koganartdesign@gmail.com",
+  'subject' => "Message from omtuae.com",
+  'message' => "Name: " . $name . "\n\n" . "Email: " . $email_from . "\n\n" . "Message: " . "\r\n" . $message,
+  'headers' => "MIME-Version: 1.0\r\n" . "Content-type: text/plain; charset=utf-8\r\n" . "From: <omtuae.com>\r\n"
+);
 
-//Create an instance; passing `true` enables exceptions
-$mail = new PHPMailer(true);
+mail($mail['to'], $mail['subject'], $mail['message'], iconv('utf-8', 'windows-1251', $mail['headers']));
 
-try {
-    $mail->isSMTP();
-    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+echo iconv('utf-8', 'windows-1251', $success_message);
 
-    $mail->CharSet = "UTF-8";
-    $mail->SMTPAuth   = false;
+?>
 
-    $mail->Host = 'localhost';
-    $mail->SMTPAutoTLS = false;
-    $mail->Port = 25;
+<head>
+  <meta http-equiv="refresh" content="7;URL=https://omtuae.com">
+  <link rel="stylesheet" href="../assets/css/main.min.css">
+</head>
 
-    // Настройки вашей почты
-    // $mail->Host       = 'smtp.mail.ru';
-    $mail->Username   = 'info@omtuae.com';
-    $mail->Password   = 'DAfiKYAMQJvSL4PJsyXw';
-    $mail->SMTPSecure = 'ssl';
-    // $mail->Port       = 465;
-
-    // Username и этот адресс должен совпадать
-    $mail->setFrom('info@omtuae.com', 'Message from website');
-
-    // Получатель письма
-    $mail->addAddress('info@omtuae.com');
-    // $mail->addAddress('youremail@gmail.com'); // Ещё один, если нужен
-
-    // Отправка сообщения
-    $mail->isHTML(true);
-
-    $mail->Subject = $title;
-    $mail->Body = $body;
-
-    $mail->send();
-
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
+<?php
+die();
+?>
