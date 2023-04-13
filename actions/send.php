@@ -26,7 +26,7 @@ $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
     $mail->CharSet = "UTF-8";
     $mail->SMTPAuth   = true;
