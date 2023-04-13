@@ -29,14 +29,18 @@ try {
     // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
     $mail->CharSet = "UTF-8";
-    $mail->SMTPAuth   = true;
+    $mail->SMTPAuth   = false;
+
+    $mail->Host = 'localhost';
+    $mail->SMTPAutoTLS = false;
+    $mail->Port = 25;
 
     // Настройки вашей почты
-    $mail->Host       = 'smtp.mail.ru';
+    // $mail->Host       = 'smtp.mail.ru';
     $mail->Username   = 'info@omtuae.com';
     $mail->Password   = 'DAfiKYAMQJvSL4PJsyXw';
     $mail->SMTPSecure = 'ssl';
-    $mail->Port       = 465;
+    // $mail->Port       = 465;
 
     // Username и этот адресс должен совпадать
     $mail->setFrom('info@omtuae.com', 'Message from website');
