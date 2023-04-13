@@ -1,33 +1,75 @@
 <?php
+// Файлы phpmailer
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
 
-if (!empty($_POST['website']))
-  die();
-
+// Переменные, которые отправляет пользователь
 $name = $_POST['name'];
-$email_from = $_POST['email'];
-$message = $_POST['message'];
-$success_message = '<div class="d-flex justify-content-center align-items-center text-center" style="width:100vw;height:100vh">
-<h3 style="width:400px;"><span class="font-weight-bold text-success">Thank you for contacting us.</span><br><br><span class="font-weight-light">We will contact you shortly.<br>You will now be redirected back to <a href="https://omtuae.com">omtuae.com.</a></span></h3>
-</div>';
+$email = $_POST['email'];
+$text = $_POST['message'];
+// $file = $_FILES['myfile'];
 
-$mail = array(
-  'to' => "info@omtuae.com",
-  'subject' => "Message from omtuae.com",
-  'message' => "Name: " . $name . "\n\n" . "Email: " . $email_from . "\n\n" . "Message: " . "\r\n" . $message,
-  'headers' => "MIME-Version: 1.0\r\n" . "Content-type: text/plain; charset=utf-8\r\n" . "From: <omtuae.com>\r\n"
-);
+// Формирование самого письма
+$title = "Заголовок письма";
+$body = "
+<h2>Новое письмо</h2>
+<b>Имя:</b> $name<br>
+<b>Почта:</b> $email<br><br>
+<b>Сообщение:</b><br>$text
+";
 
-mail($mail['to'], $mail['subject'], $mail['message'], iconv('utf-8', 'windows-1251', $mail['headers']));
+// Настройки PHPMailer
+$mail = new PHPMailer\PHPMailer\PHPMailer();
+try {
+  $mail->isSMTP();
+  $mail->CharSet = "UTF-8";
+  $mail->SMTPAuth   = true;
+  //$mail->SMTPDebug = 2;
+  $mail->Debugoutput = function ($str, $level) {
+    $GLOBALS['status'][] = $str;
+  };
 
-echo iconv('utf-8', 'windows-1251', $success_message);
+  // Настройки вашей почты
+  $mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
+  $mail->Username   = 'info@omtuae.com'; // Логин на почте
+  $mail->Password   = 'UiYYiiPae21%'; // Пароль на почте
+  $mail->SMTPSecure = 'ssl';
+  $mail->Port       = 465;
+  $mail->setFrom('mail@mail.ru', 'Message from website'); // Адрес самой почты и имя отправителя
 
-?>
+  // Получатель письма
+  $mail->addAddress('info@omtuae.com');
+  // $mail->addAddress('youremail@gmail.com'); // Ещё один, если нужен
 
-<head>
-  <meta http-equiv="refresh" content="7;URL=https://omtuae.com">
-  <link rel="stylesheet" href="../assets/css/main.min.css">
-</head>
+  // Прикрипление файлов к письму
+  // if (!empty($file['name'][0])) {
+  //   for ($ct = 0; $ct < count($file['tmp_name']); $ct++) {
+  //     $uploadfile = tempnam(sys_get_temp_dir(), sha1($file['name'][$ct]));
+  //     $filename = $file['name'][$ct];
+  //     if (move_uploaded_file($file['tmp_name'][$ct], $uploadfile)) {
+  //       $mail->addAttachment($uploadfile, $filename);
+  //       $rfile[] = "Файл $filename прикреплён";
+  //     } else {
+  //       $rfile[] = "Не удалось прикрепить файл $filename";
+  //     }
+  //   }
+  // }
+  // Отправка сообщения
+  $mail->isHTML(true);
+  $mail->Subject = $title;
+  $mail->Body = $body;
 
-<?php
-die();
-?>
+  // Проверяем отравленность сообщения
+  if ($mail->send()) {
+    $result = "success";
+  } else {
+    $result = "error";
+  }
+} catch (Exception $e) {
+  $result = "error";
+  $status = "Сообщение не было отправлено. Причина ошибки: {$mail->ErrorInfo}";
+}
+
+// Отображение результата
+echo json_encode(["result" => $result, "resultfile" => $rfile, "status" => $status]);
